@@ -30,6 +30,14 @@ class MainActivity : ComponentActivity() {
 
         // Initialize Google Mobile Ads SDK as per AdMob integration guide
         try {
+            val webViewCache = java.io.File(cacheDir, "WebView/Default/HTTP Cache/Code Cache/js")
+            if (!webViewCache.exists()) {
+                webViewCache.mkdirs()
+            }
+        } catch (_: Exception) {
+        }
+
+        try {
             val requestConfig = com.google.android.gms.ads.RequestConfiguration.Builder()
                 .setTestDeviceIds(listOf(com.google.android.gms.ads.AdRequest.DEVICE_ID_EMULATOR))
                 .build()
