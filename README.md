@@ -122,17 +122,15 @@ gradle :app:bundleRelease
 
 ---
 
-## AdMob Configuration (Migration to Production)
+## AdMob Advertising Configuration
 
-The app is currently configured with **Google's official AdMob test identifiers**:
-- **Test App ID:** `ca-app-pub-3940256099942544~3347511713`
-- **Test Banner Unit ID:** `ca-app-pub-3940256099942544/6300978111`
+The application is configured with ViveScript Solutions LLC's Google AdMob credentials:
+- **AdMob App ID:** `ca-app-pub-5222053984568989~6515064111`
+- **Banner Ad Unit ID:** `ca-app-pub-5222053984568989/6167579759`
+- **Interstitial Ad Unit ID:** `ca-app-pub-5222053984568989/9212634784`
 
-To deploy with production ads:
-1. Open `app/src/main/java/com/example/util/AdConfig.kt`.
-2. Insert your production Ad Unit ID in `PRODUCTION_BANNER_AD_UNIT_ID`.
-3. Set `IS_TEST_MODE = false`.
-4. Update `AndroidManifest.xml` meta-data `com.google.android.gms.ads.APPLICATION_ID` with your production AdMob App ID.
+Centralized ad configuration is managed in `app/src/main/java/com/example/util/AdConfig.kt`.
+Interstitial frequency is managed by `InterstitialAdManager.kt` following strict AdMob policy guidelines (cooldown intervals, action capping, and non-intrusive presentation).
 
 ---
 

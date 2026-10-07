@@ -1,5 +1,6 @@
 package com.example.ui.calculator.components
 
+import android.view.View
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,39 +12,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.domain.model.AppLanguage
 import com.example.util.AdConfig
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.LoadAdError
 
 @Composable
 fun BannerAdView(
     language: AppLanguage,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-
-    // Initialize MobileAds once
-    remember {
-        try {
-            MobileAds.initialize(context)
-        } catch (_: Exception) {
-            // Graceful fallback if Google Play services not ready
-        }
-        true
-    }
-
     Surface(
         modifier = modifier
             .fillMaxWidth()
@@ -77,7 +64,31 @@ fun BannerAdView(
                         AdView(ctx).apply {
                             setAdSize(AdSize.BANNER)
                             adUnitId = AdConfig.bannerAdUnitId
-                            loadAd(AdRequest.Builder().build())
+
+                            // Use software layer on virtualized rendering environments
+                            // to prevent MESA rendernode missing errors
+                            try {
+                                setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                            } catch (_: Exception) {
+                            }
+
+                            adListener = object : AdListener() {
+                                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                                    // Handle load failures gracefully without disrupting UI
+                                }
+                            }
+
+                            try {
+                                val adRequest = AdRequest.Builder().build()
+                                loadAd(adRequest)
+                            } catch (_: Exception) {
+                            }
+                        }
+                    },
+                    onRelease = { adView ->
+                        try {
+                            adView.destroy()
+                        } catch (_: Exception) {
                         }
                     },
                     modifier = Modifier.testTag("admob_adview")

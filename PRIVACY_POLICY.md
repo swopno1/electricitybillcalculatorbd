@@ -42,10 +42,10 @@ The Application stores a minimal set of preferences **strictly on your local dev
 
 ## 4. Network Communication & Advertising (Google AdMob)
 
-The core bill calculation does not access the internet. However, the Application includes the Google Mobile Ads SDK (AdMob) to display non-intrusive banner advertisements:
+The core bill calculation operates completely offline and does not access the internet. The Application includes the Google Mobile Ads SDK (AdMob) to display non-intrusive banner advertisements and policy-compliant interstitial placements:
 
-- **Current Implementation:** Configured using Google's official test ad unit identifiers (`ca-app-pub-3940256099942544~3347511713`).
-- **Data Handled by Google Play Services / AdMob:** When connected to the internet, Google Mobile Ads may process general device identifiers (such as Android Advertising ID), coarse diagnostic data, and ad interaction metrics to deliver and measure ad performance in compliance with Google Play Developer Policies.
+- **AdMob Integration:** Configured with ViveScript Solutions LLC's Google AdMob identifiers (App ID: `ca-app-pub-5222053984568989~6515064111`, Banner Unit ID: `ca-app-pub-5222053984568989/6167579759`, Interstitial Unit ID: `ca-app-pub-5222053984568989/9212634784`).
+- **Data Handled by Google Play Services / AdMob:** When connected to the internet, Google Mobile Ads may process general device identifiers (such as Android Advertising ID), coarse diagnostic data, and ad interaction metrics to deliver and measure ad performance in compliance with Google Play Developer Policies. Ad frequency is strictly capped to protect user experience.
 
 For more information regarding how Google processes data, please visit:  
 [Google Privacy & Terms](https://policies.google.com/privacy) and [Google Ads Technologies](https://policies.google.com/technologies/ads).

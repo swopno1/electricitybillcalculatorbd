@@ -15,6 +15,8 @@ import com.example.ui.calculator.CalculatorScreen
 import com.example.ui.calculator.CalculatorViewModel
 import com.example.ui.calculator.CalculatorViewModelFactory
 import com.example.ui.theme.ElecBillBdTheme
+import com.example.util.InterstitialAdManager
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : ComponentActivity() {
 
@@ -26,6 +28,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        // Initialize Google Mobile Ads SDK as per AdMob integration guide
+        try {
+            val requestConfig = com.google.android.gms.ads.RequestConfiguration.Builder()
+                .setTestDeviceIds(listOf(com.google.android.gms.ads.AdRequest.DEVICE_ID_EMULATOR))
+                .build()
+            MobileAds.setRequestConfiguration(requestConfig)
+
+            MobileAds.initialize(this) {
+                try {
+                    InterstitialAdManager.preload(applicationContext)
+                } catch (_: Exception) {
+                }
+            }
+        } catch (_: Exception) {
+            // Graceful fallback for environments without Play services
+        }
+
         setContent {
             val state by viewModel.state.collectAsState()
 
@@ -34,9 +53,18 @@ class MainActivity : ComponentActivity() {
                     CalculatorScreen(
                         state = state,
                         onUnitsChanged = viewModel::onUnitsChanged,
-                        onPresetSelected = viewModel::onPresetSelected,
-                        onCalculate = viewModel::calculate,
-                        onReset = viewModel::reset,
+                        onPresetSelected = { preset ->
+                            viewModel.onPresetSelected(preset)
+                            InterstitialAdManager.showIfEligible(this@MainActivity)
+                        },
+                        onCalculate = {
+                            viewModel.calculate()
+                            InterstitialAdManager.showIfEligible(this@MainActivity)
+                        },
+                        onReset = {
+                            viewModel.reset()
+                            InterstitialAdManager.showIfEligible(this@MainActivity)
+                        },
                         onLanguageSelected = viewModel::setLanguage,
                         onPlanSelected = viewModel::setSelectedPlan,
                         onToggleBreakdownExpanded = viewModel::toggleBreakdownExpanded,
