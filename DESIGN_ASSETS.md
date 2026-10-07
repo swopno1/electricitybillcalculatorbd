@@ -34,52 +34,80 @@
 
 ## 2. Google Play Feature Graphic
 
+- **File Location:** `play_store_assets/feature_graphic.png` (and `app/src/main/res/drawable/play_feature_graphic.png`)
 - **Dimensions:** 1024 x 500 px (Landscape)
-- **Format:** 24-bit PNG or JPEG (no alpha)
-- **Maximum File Size:** 15 MB
-- **Composition:**
-  - **Background:** Rich gradient shifting from deep forest green (`#063825`) to dark emerald (`#0B6645`).
-  - **Left / Center Side:** Bold headline in clean typography:
-    - *"Electricity Bill Calculator BD"*
-    - Subtitle: *"Fast, Transparent & Offline • Official BERC Slabs"*
-  - **Right Side:** High-fidelity tilted mockup of the main bill estimation card highlighting `৳ 2,852` with the golden lightning symbol.
-  - **Bottom Corner:** Subtle brand mark: *"ViveScript Solutions LLC"*.
+- **Format:** 24-bit PNG (no alpha, exactly matching Google Play Console specifications)
+- **File Size:** ~557 KB (< 15 MB limit)
+- **Visual Composition:**
+  - Modern minimalist dark forest & emerald green gradient background.
+  - Glowing golden electric bolt intertwined with clean white receipt bill document featuring the Bangladesh Taka (৳) symbol.
+  - High-contrast, professional Android utility presentation suitable for top-of-listing Google Play merchandising.
 
 ---
 
-## 3. Google Play Screenshots Sequence
+## 3. Google Play Store App Icon
 
-Recommended 6-screenshot set for Google Play Store listing (1080 x 2400 px, 20:9 ratio):
+- **File Location:** `play_store_assets/icon_512x512.png` (and `app/src/main/res/drawable/play_store_icon.png`)
+- **Dimensions:** 512 x 512 px
+- **Format:** 32-bit PNG with RGBA (< 1024 KB limit)
+- **Visual Identity:**
+  - Solid `#0D5C3E` emerald background.
+  - Centered golden lightning bolt emblem intertwined with minimalist document receipt silhouette.
+  - Crisp, scalable silhouette for high recognition on mobile screens and Play Store web pages.
 
-### Screenshot 1: Instant Bill Calculation
-- **Headline:** Instant Electricity Bill Estimation
-- **Subtitle:** Enter your monthly units (kWh) and see your bill in seconds.
-- **Visual:** Main screen with `100 kWh` entered and prominent `৳ 647.33` result card.
+---
 
-### Screenshot 2: Progressive Slab Breakdown
-- **Headline:** Transparent Slab-by-Slab Breakdown
-- **Subtitle:** Understand every step of your bill under official BERC tariffs.
-- **Visual:** Expanded bill breakdown table showing Lifeline, Slab 1, Slab 2, Demand charge, and 5% VAT.
+## 4. Google Play Screenshots Sequence (Live Attached Captures)
 
-### Screenshot 3: One-Tap Quick Presets
-- **Headline:** Quick Presets for Fast Calculations
-- **Subtitle:** One tap for 50, 100, 200, 300, 500, or 1000 units.
-- **Visual:** Focus on the horizontal quick-preset chips row.
+The following 4 official high-resolution screenshots are captured directly from the live application and prepared for Google Play Console submission (1080 x 2400 px, 20:9 aspect ratio):
 
-### Screenshot 4: Full Bilingual Support (বাংলা ও English)
-- **Headline:** সম্পূর্ণ বাংলা এবং ইংরেজি ইন্টারফেস
-- **Subtitle:** বাংলা সংখ্যা (০-৯) ও টাকা (৳) প্রতীকের পূর্ণাঙ্গ সাপোর্ট।
-- **Visual:** Complete screen in Bangla mode displaying `৳ ২,৮৫২`.
+### Screenshot 1 (`screenshot_1.png`): Main Calculation & Estimated Bill Result
+- **Headline (EN):** Instant Electricity Bill Estimation
+- **Headline (BN):** তাৎক্ষণিক বিদ্যুৎ বিল হিসাব
+- **Key Display:**
+  - Numeric usage input: `100 kWh`
+  - Prominent result card: **৳ ৬৪৭.৩৩** (100 ইউনিট)
+  - Itemized summary: Energy Charge `৳ ৫৭৪.৫০`, Demand Charge `৳ ৪২`, VAT `৳ ৩০.৮৩`
+  - Quick-preset chips (`৫০`, `১০০`, `২০০`, `৩০০`, `৫০০`, `১০০০ kWh`)
+  - One-tap Copy and Share actions
 
-### Screenshot 5: 100% Offline & Private
-- **Headline:** Works Completely Offline
-- **Subtitle:** No login, no accounts, and no data tracking.
-- **Visual:** Highlight showing offline readiness badge and zero registration requirement.
+### Screenshot 2 (`screenshot_2.png`): Progressive Slab Breakdown & Ad Placement
+- **Headline (EN):** Transparent Slab-by-Slab Breakdown
+- **Headline (BN):** ধাপভিত্তিক স্বচ্ছ হিসাব
+- **Key Display:**
+  - Expanded progressive tariff breakdown table:
+    - ১ম ধাপ (০ – ৭৫ ইউনিট) @ ৳ ৫.২৬ = ৳ ৩৯৪.৫০
+    - ২য় ধাপ (৭৬ – ২০০ ইউনিট) @ ৳ ৭.২০ = ৳ ১৮০.০০
+  - BERC 2024 official tariff schedule disclaimer
+  - Non-intrusive AdMob banner placement with clear "বিজ্ঞাপন" sponsorship label
+  - On-device recent calculations history
 
-### Screenshot 6: Easy Share & History
-- **Headline:** One-Tap Share & Recent History
-- **Subtitle:** Share itemized bills with roommates and recall previous calculations.
-- **Visual:** Native Android share sheet and the 5-item recent calculations card.
+### Screenshot 3 (`screenshot_3.png`): Settings, Theming & Company Profile
+- **Headline (EN):** Simple Settings & Company Profile
+- **Headline (BN):** সহজ সেটিংস ও কোম্পানি পরিচিতি
+- **Key Display:**
+  - Instant language selector: বাংলা / English
+  - Display theme selection: সিস্টেম অনুযায়ী / লাইট / ডার্ক
+  - Demand charge toggle switch (১ kW)
+  - Developer branding: **ViveScript Solutions LLC** (`https://www.vivescriptsolutions.com/`)
+  - © 2026 ViveScript Solutions LLC copyright & MIT License notice
+
+### Screenshot 4 (`screenshot_4.png`): Official BERC Tariff Information Sheet
+- **Headline (EN):** Official Bangladesh Tariff Schedule
+- **Headline (BN):** সরকারি গেজেট ও ট্যারিফ নিয়মাবলী
+- **Key Display:**
+  - BERC & Power Division authority attribution
+  - Gazette reference: S.R.O. No. 51-Act/2024 (Effective March 1, 2024)
+  - Demand charge & 5% VAT rate specifications
+  - Full residential rate schedule:
+    - Lifeline (1–50 units): ৳ 4.63 / kWh
+    - Slab 1 (0–75 units): ৳ 5.26 / kWh
+    - Slab 2 (76–200 units): ৳ 7.20 / kWh
+    - Slab 3 (201–300 units): ৳ 7.59 / kWh
+    - Slab 4 (301–400 units): ৳ 8.02 / kWh
+    - Slab 5 (401–600 units): ৳ 12.67 / kWh
+    - Slab 6 (> 600 units): ৳ 14.61 / kWh
+  - Distribution company coverage (DESCO, DPDC, BPDB, BREB, NESCO, WZPDCL)
 
 ---
 
