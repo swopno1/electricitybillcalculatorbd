@@ -1,0 +1,6 @@
+{
+  "name": "Electricity Bill Calculator BD",
+  "description": "Fast, offline electricity bill calculator for Bangladesh. Estimate monthly electricity bills from units (kWh) with detailed slab breakdown.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
