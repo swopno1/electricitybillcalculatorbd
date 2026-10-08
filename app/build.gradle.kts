@@ -26,11 +26,17 @@ android {
     create("release") {
       val customPath = System.getenv("KEYSTORE_PATH")
       val customFile = customPath?.let { file(it) }
+      val releaseKeystore = file("${rootDir}/release.keystore")
       if (customFile != null && customFile.exists()) {
         storeFile = customFile
         storePassword = System.getenv("STORE_PASSWORD")
-        keyAlias = System.getenv("KEY_ALIAS") ?: "upload"
-        keyPassword = System.getenv("KEY_PASSWORD")
+        keyAlias = System.getenv("KEY_ALIAS") ?: "vivescript_release"
+        keyPassword = System.getenv("KEY_PASSWORD") ?: System.getenv("STORE_PASSWORD")
+      } else if (releaseKeystore.exists()) {
+        storeFile = releaseKeystore
+        storePassword = System.getenv("STORE_PASSWORD") ?: "vivescript2026"
+        keyAlias = System.getenv("KEY_ALIAS") ?: "vivescript_release"
+        keyPassword = System.getenv("KEY_PASSWORD") ?: "vivescript2026"
       } else {
         // Fallback to debug keystore when standalone release keystore is not provisioned
         storeFile = file("${rootDir}/debug.keystore")

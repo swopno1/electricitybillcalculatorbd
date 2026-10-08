@@ -140,6 +140,7 @@ Interstitial frequency is managed by `InterstitialAdManager.kt` following strict
 - [Terms of Service](TERMS_OF_SERVICE.md)
 - [Play Store Metadata & ASO](PLAY_STORE_METADATA.md)
 - [Google Play Data Safety Guide](PLAY_STORE_DATA_SAFETY.md)
+- [Release Signing Guide](RELEASE_SIGNING.md)
 - [Design & Graphic Assets](DESIGN_ASSETS.md)
 - [Changelog](CHANGELOG.md)
 
